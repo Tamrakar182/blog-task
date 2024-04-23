@@ -1,5 +1,5 @@
-import RegisterSection from '../../../section/RegisterSection';
 import AuthLayout from '../../../layout/auth';
+import RegisterSection from '../../../section/auth/RegisterSection';
 
 function RegisterRoute() {
     return (

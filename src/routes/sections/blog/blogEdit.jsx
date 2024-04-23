@@ -1,13 +1,27 @@
 import MainLayout from "../../../layout/main"
-import { generateDummyBlogPostData } from "../../../../dummy"
-import BlogList from "../../../components/BlogList"
+import useApi from "../../../hooks/useApi"
+import useFetchBlogId from "../../../hooks/useFetchBlogId"
+import BlogCreateEditForm from "../../../section/blog/BlogCreateEditForm"
+import { useParams } from 'react-router-dom';
 
 function BlogEditRoute() {
-  const dummyData = generateDummyBlogPostData(50)
+  const { patch } = useApi()
+  const { id } = useParams()
+  const { data, isLoading } = useFetchBlogId(id)
+
+  const handleSubmit = async (values) => {
+    console.log(values)
+    const response = await patch("/blog", values)
+    console.log(response)
+  }
+
+  if (isLoading || !data) {
+    return <div>Loading...</div>
+  }
 
   return (
     <MainLayout>
-      <BlogList blogList={dummyData} />
+      <BlogCreateEditForm onSubmit={handleSubmit} initialData={data} />
     </MainLayout>
   )
 }

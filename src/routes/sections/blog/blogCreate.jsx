@@ -1,13 +1,19 @@
 import MainLayout from "../../../layout/main"
-import { generateDummyBlogPostData } from "../../../../dummy"
-import BlogList from "../../../components/BlogList"
+import BlogCreateEditForm from "../../../section/blog/BlogCreateEditForm"
+import useApi from "../../../hooks/useApi"
 
 function BlogCreateRoute() {
-  const dummyData = generateDummyBlogPostData(50)
+  const { post } = useApi()
+
+  const handleSubmit = async (values) => {
+    console.log(values)
+    const response = await post("/blog", values)
+    console.log(response)
+  }
 
   return (
     <MainLayout>
-      <BlogList blogList={dummyData} />
+      <BlogCreateEditForm onSubmit={handleSubmit} />
     </MainLayout>
   )
 }

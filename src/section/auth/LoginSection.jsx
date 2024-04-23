@@ -1,6 +1,6 @@
-import { useAuthContext } from "../auth/use-auth-context";
+import { useAuthContext } from "../../auth/use-auth-context";
 import { Link } from "react-router-dom";
-import { paths } from "../routes/path";
+import { paths } from "../../routes/path";
 
 export default function LoginSection() {
     const { login } = useAuthContext();
