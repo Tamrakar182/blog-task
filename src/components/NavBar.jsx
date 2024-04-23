@@ -8,7 +8,7 @@ function NavBar({ type }) {
 
     if (type === "auth") {
         return (
-            <nav className="sticky inset-0 bg-[#7CCFF2] w-full">
+            <nav className="sticky inset-0 bg-[#7CCFF2] w-full z-50">
                 <ul className="flex flex-row w-full h-full justify-center items-center">
                     <li className="p-6">
                         <Link to={paths.root}>📚Blog Reader📚</Link>
@@ -18,7 +18,7 @@ function NavBar({ type }) {
         );
     }
     return (
-        <nav className="sticky inset-0 bg-[#7CCFF2] w-full">
+        <nav className="sticky inset-0 bg-[#7CCFF2] w-full z-50">
             <ul className="flex flex-row w-full h-full justify-between">
                 <li className="p-6">
                     <Link to={paths.root}>Home</Link>
