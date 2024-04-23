@@ -6,9 +6,9 @@ export const paths = {
     },
     blog: {
         list: '/blog',
-        detail: '/blog/:id',
+        detail: (id) => `/blog/${id}/details`,
         create: '/blog/create',
-        edit: '/blog/edit/:id', 
+        edit: (id) => `/blog/${id}/edit`, 
     }
 
 }
