@@ -1,10 +1,8 @@
 import {
     createBrowserRouter,
 } from "react-router-dom";
-import Root from './sections/Root'
 import ErrorPage from './sections/error-page'
-import Blog from "./sections/blog";
-import LoginRoute from "./sections/login";
+import { Root, Login, Register, Blog, BlogCreate, BlogUpdate, BlogDetails } from "./sections";
 
 const router = createBrowserRouter([
     {
@@ -16,11 +14,38 @@ const router = createBrowserRouter([
         path: "/blog",
         element: <Blog />,
         errorElement: <ErrorPage />,
+        children: [
+            {
+                path: "create",
+                element: <BlogCreate />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: ":id/edit",
+                element: <BlogUpdate />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: ":id/details",
+                element: <BlogDetails />,
+                errorElement: <ErrorPage />,
+            },
+        ]
     },
     {
-        path: "/login",
-        element: <LoginRoute />,
-        errorElement: <ErrorPage />,
+        path: "/auth",
+        children: [
+            {
+                path: "login",
+                element: <Login />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: "register",
+                element: <Register />,
+                errorElement: <ErrorPage />,
+            },
+        ]
     },
     {
         path: "/error",

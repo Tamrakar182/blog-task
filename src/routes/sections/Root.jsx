@@ -1,18 +1,14 @@
-import MainLayout from "../../layout/main"
-import { generateDummyBlogPostData } from "../../../dummy"
-import BlogList from "../../components/BlogList"
-// import useFetchBlog from "../../hooks/useFetchBlog"
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
-function Root() {
-  const dummyData = generateDummyBlogPostData(50)
+function RootRoute() {
+  const navigate = useNavigate();
 
-  // const { blog, loading, error } = useFetchBlog()
+  useEffect(() => {
+    navigate('/blog');
+  }, [navigate]);
 
-  return (
-    <MainLayout>
-      <BlogList blogList={dummyData} />
-    </MainLayout>
-  )
+  return null;
 }
 
-export default Root
+export { RootRoute }
